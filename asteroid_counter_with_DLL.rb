@@ -16,6 +16,26 @@ class AsteroidCounterWithDLL
 		@asteroids = asteroids_array
 	end
 
+	def asteroids_remaining_after_collisions
+		asteroids_DLL = DoublyLinkedList.new(asteroids)
+
+		previous_node, current_node = asteroids_DLL.head, asteroids_DLL.head.next
+
+		while current_node
+			eliminated_asteroid = 
+				Asteroid.eliminated_in_collision(previous_node.value, current_node.value)
+
+			if eliminated_asteroid
+				previous_node, current_node = remove_eliminated_asteroid_node(
+					asteroids_DLL, previous_node, current_node, eliminated_asteroid)
+			else
+				previous_node, current_node = current_node, current_node.next
+			end
+		end
+
+		asteroids_DLL.to_a.map(&:value)
+	end
+
 	def find_eliminated_node(previous_node, current_node, eliminated_asteroid)
 		[previous_node, current_node].find { |node| node.value == eliminated_asteroid }
 	end
@@ -39,26 +59,6 @@ class AsteroidCounterWithDLL
 		else
 			[remaining_node, remaining_node.next]
 		end
-	end
-
-	def asteroids_remaining_after_collisions
-		asteroids_DLL = DoublyLinkedList.new(asteroids)
-
-		previous_node, current_node = asteroids_DLL.head, asteroids_DLL.head.next
-
-		while current_node
-			eliminated_asteroid = 
-				Asteroid.eliminated_in_collision(previous_node.value, current_node.value)
-
-			if eliminated_asteroid
-				previous_node, current_node = remove_eliminated_asteroid_node(
-					asteroids_DLL, previous_node, current_node, eliminated_asteroid)
-			else
-				previous_node, current_node = current_node, current_node.next
-			end
-		end
-
-		asteroids_DLL.to_a.map(&:value)
 	end
 
 	def rightward_asteroid_count_after_collisions
