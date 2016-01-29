@@ -20,11 +20,13 @@ Here's an example. Each asteroid is represented by a number indicating its
 weight, and an arrow indicating its direction.
 
 3 9 4 2 6 7 8
+
 < > < > > < >
 
 After all collisions, we have the following asteroids remaining:
 
 3 9 8
+
 < > >
 
 (All other asteroids were eliminated in the collisions.)
