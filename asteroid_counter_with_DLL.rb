@@ -1,5 +1,5 @@
-require_relative 'DataStructures/asteroid'
-require_relative 'DataStructures/doubly_linked_list'
+require_relative 'data_structures/asteroid'
+require_relative 'data_structures/doubly_linked_list'
 
 # AsteroidCounterWithDLL#asteroids_remaining_after_collisions returns an array 
 # of all the asteroids remaining after collisions.

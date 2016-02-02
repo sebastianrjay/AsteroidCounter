@@ -1,4 +1,4 @@
-require_relative 'DataStructures/asteroid'
+require_relative 'data_structures/asteroid'
 
 # AsteroidCounterWithArray#asteroids_remaining_after_collisions returns an array 
 # of all the asteroids remaining after collisions.
